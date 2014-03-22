@@ -1,4 +1,4 @@
-<?
+<?php
 	function drawgrid()
 	{
 		global $color, $unit, $health, $weakCurse, $strongCurse, $weakBuff, $strongBuff, $airAttack, $airDefence, $groundAttack, $groundDefence, $attackRange, $moveRange, $superPower;
