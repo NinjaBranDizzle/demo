@@ -1,0 +1,279 @@
+/*
+* ===========================================================
+*
+* ======================Global Styles========================
+*
+* ===========================================================
+*/
+
+body {
+    background: #000 url(../images/loginBg.jpg) no-repeat top center;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: auto;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.nav-tabs {
+    margin-top: 15px;
+}
+
+.tab-content {
+    padding-top: 15px;
+}
+
+.topNavContainer {
+    width: 100%;
+    height: 20px;
+    background-color: #ccc;
+}
+
+.topNavLinks {
+    width: 1024px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.topNavLinks a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.alert {
+    color: red;
+}
+
+.wrapper {
+    max-width: 1024px;
+    margin: 10px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #999;
+}
+/*
+* ===========================================================
+*
+* =========================Login Styles======================
+*
+* ===========================================================
+*/
+.mapContainer {
+    max-width: 1024px;
+    width: 100%;
+    height: 768px;
+    padding: 4px 0px 0px 6px;
+    margin: 0 auto;
+    background: #fff url(../images/map1.png) no-repeat;
+}
+
+.cellWrapper {
+    border: 1px solid #999;
+}
+
+.cell {
+    width: 5.3%;
+    height: 8%;
+    text-align: center;
+    float: left;
+    border: 1px solid #999;
+}
+
+.cell img {
+    width: 100%;
+    position: relative;
+}
+
+.buttonContainer {
+    width: 130px;
+    margin: 0 auto;
+}
+
+#login, .registerWrapper {
+    width: 300px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #999;
+}
+
+#login input, .registerWrapper input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+#login #submit {
+    font-size: 18px;
+}
+/*
+* ===========================================================
+*
+* =========================Map Styles========================
+*
+* ===========================================================
+*/
+.buttonContainer {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.buttonContainer .mapSelect {
+    width: 300px;
+    float: left;
+}
+
+.buttonContainer .mapSelect select {
+    float: left;
+    width: 200px;
+    margin-right: 15px;
+}
+
+.buttonContainer .mapSelect button {
+    float: left;
+    margin-top: 2px;
+}
+
+.buttonContainer .gridSelect {
+    width: 300px;
+    float: right;
+    text-align: right;
+}
+
+.unitStats {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 50px;
+    text-align: left;
+}
+
+.unitStats h4 {
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+    border-bottom: 1px solid #000;
+    margin: 0 0 10px 0;
+}
+
+/*
+* ===========================================================
+*
+* ======================Scoreboard Styles====================
+*
+* ===========================================================
+*/
+.scoreboard {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.scoreboard .bar {
+    border-style: groove;
+    border-width: 1px;
+    border-color: #ccc;
+    box-shadow: 1px 1px 1px #ccc;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 10px;
+}
+
+.scoreboard .col {
+    width: 33%;
+    padding: 25px;
+    float: left;
+}
+
+.scoreboard p.player {
+    font-size: 30px;
+    color: blue;
+    display: inline-block;
+}
+
+.scoreboard p.score {
+    font-size: 30px;
+    color: red;
+    display: inline-block;
+}
+
+.scoreboard img {
+    vertical-align: bottom;
+    margin-top: 10px
+}
+
+/*
+* ===========================================================
+*
+* =======================Register Styles=====================
+*
+* ===========================================================
+*/
+#register {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #ccc;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+/*
+* ===========================================================
+*
+* ========================Media Queries======================
+*
+* ===========================================================
+*/
+/* Large desktop */
+@media (max-width: 1024px) {
+    .container {
+        width: 480px;
+        height: 320px;
+        padding: 4px 0px 0px 6px;
+        margin: 0 auto;
+        background: #fff url(../images/map1-480.png) no-repeat;
+    }
+
+    .cell {
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        float: left;
+        border: 1px solid #999;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    ...
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    ...
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    ...
+}
+
