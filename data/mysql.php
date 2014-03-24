@@ -168,22 +168,70 @@ class Mysql
 		}
 	}
 
-	function loadBuildingTypes() {
-		global $buildingTypes;
 
-		$query = "SELECT building_type FROM building_types ";
+	//Load Buildings types
+	function loadBuildingTypes() {
+		$query = "SELECT NAME FROM BUILDINGS";
 		if($stmt = $this->conn->prepare($query)){
 			$stmt->execute();
 
-			$stmt->bind_result($buildingTypeResult);
-			while ($stmt->fetch()) {
-			
-				$buildingTypes[] = $buildingTypeResult;
-			}
-			$stmt->close();
+			$meta = $stmt->result_metadata();
+            while($fields = $meta->fetch_field()) {
+                $result_param[] = &$row[$fields->name];
+            }
+         	call_user_func_array(array($stmt, 'bind_result'), $result_param);
+            while ($stmt->fetch()) {
+                foreach ($row as $key => $value) {
+                    $c[$key] = $value;
+                }
+                $arr[] = $c;
+            }
+            $stmt->close();
+            return $arr;
 
 		}
 	}
+
+	//Load Attributes for single Building
+	function editBuildingSelect($building) {
+		$query = "SELECT * FROM BUILDINGS WHERE NAME = ? ";
+		if($stmt = $this->conn->prepare($query)){
+			$stmt->bind_param('s', $building);
+			$stmt->execute();
+
+			$meta = $stmt->result_metadata();
+            while($fields = $meta->fetch_field()) {
+                $result_param[] = &$row[$fields->name];
+            }
+         	call_user_func_array(array($stmt, 'bind_result'), $result_param);
+            while ($stmt->fetch()) {
+                foreach ($row as $key => $value) {
+                    $c[$key] = $value;
+                }
+                $arr[] = $c;
+            }
+            $stmt->close();
+            return $arr;
+		}
+	}
+
+	//Save Attributes for single building
+	function saveBuildingAtt($buildingHealth, $canParent, $popProvided, $buildingName) {
+		$query = "UPDATE BUILDINGS SET HEALTH=?, CAN_PARENT=?, POP_PROVIDED=? WHERE NAME=?";
+		if($stmt = $this->conn->prepare($query)){
+			$stmt->bind_param('iiis', $buildingHealth, $canParent, $popProvided, $buildingName);
+            $stmt->execute();
+
+			if ($stmt->errno) {
+			  echo "FAILURE!!! " . $stmt->error();
+			}
+			else echo "Updated {$stmt->affected_rows} rows";
+			$stmt->close();
+
+
+		}
+	}
+
 
 	//Load Units for Edit Units Functionality
 	function loadUnitTypes() {
@@ -206,7 +254,6 @@ class Mysql
             return $arr;
 
 		}
-
 	}
 
 	//Load Attributes for single unit
@@ -232,7 +279,7 @@ class Mysql
 		}
 	}
 
-	//Load Attributes for single unit
+	//Save Attributes for single unit
 	function saveUnitAtt($unitHealth, $weakCurseMod, $strongCurseMod, $weakBuffMod, $strongBuffMod, $parentStructure, $canFly, $canDrive, $hasSuperPower, $unitDesc) {
 		$query = "UPDATE BS_UNIT SET HEALTH=?, WEAK_CURSE_MOD=?, STRONG_CURSE_MOD=?, WEAK_BUFF_MOD=?, STRONG_BUFF_MOD=?, PARENT_STRUCTURE=?, CAN_FLY=?, CAN_DRIVE=?, HAS_SUPER_POWER=? WHERE UNIT_DESC=?";
 		if($stmt = $this->conn->prepare($query)){

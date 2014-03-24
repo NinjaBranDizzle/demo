@@ -32,6 +32,80 @@ $(function() {
 	  $('#' + id +'Content').toggle();
 	});
 
+	//Select Building type for editing
+	$('#selectBuildingSubmit').on('click',function(){
+		var _selectedBuilding = $('#editBuildingSelect option:selected').text();
+		console.log(_selectedBuilding);
+		$.post('/ajax/editBuildingSelect.php',{
+				task : 'getBuilding',
+				selectedBuilding : _selectedBuilding
+			}
+		)
+		.error(
+			function(data){
+				console.log("Error retrieving Building");
+				console.log(data);
+			})
+		.success(
+			function(data){
+				console.log("Success");
+				populateBuildingAttributes(jQuery.parseJSON(data));
+				
+		});
+	});
+
+	//Populate Building Attributes for Editing
+	function populateBuildingAttributes(data){
+
+		console.log("made it");
+		$('#buildingHealth').val(data[0].HEALTH);
+
+		var canParent = data[0].CAN_PARENT;
+		if(canParent === 1){
+			$('#canParent').prop('checked', true);
+		}else{
+			$('#canParent').prop('checked', false);
+		}
+		$('#popProvided').val(data[0].POP_PROVIDED);
+
+	}
+
+	//Save Building Attributes to Database
+	$('#submitBuildingAtt').on('click', function(){
+		var _buildingName = $('#editBuildingSelect option:selected').text();
+		var _buildingHealth = $('#buildingHealth').val();
+
+		if ($('#canParent').is(':checked')){
+			var _canParent = '1';
+		}else
+			var _canParent = '0';
+
+		var _popProvided = $('#popProvided').val();
+		//alert ("Building Name: " + _buildingName + " Building Health: " + _buildingHealth + " Can Parent: " + _canParent + " Pop Provided: " + _popProvided);
+		
+		//Ajax post to save to database
+		$.post('/ajax/editBuildingSelect.php',{
+				task : 'saveBuilding',
+				buildingName : _buildingName,
+				buildingHealth : _buildingHealth,
+				canParent : _canParent,
+				popProvided : _popProvided
+			}
+		)
+		.error(
+			function(data){
+				console.log("Error Saving Building to database");
+				console.log(data);
+			})
+		.success(
+			function(data){
+				console.log("Success Saving Building to database");
+				console.log(data);
+				alert("Building Attributes have been saved!");
+				
+		});
+
+	});
 
 	//Select Unit type for editing
 	$('#selectUnitSubmit').on('click',function(){
