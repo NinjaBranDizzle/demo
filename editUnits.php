@@ -21,7 +21,7 @@
         }
         ?>						
     </select>
-    <button style="float:left;margin-left:15px;" type="button" id="selectUnitSubmit" class="btn btn-primary">Select</button>
+    
 </div>
 
     <form class="form-horizontal" role="form" id="editUnitForm">
@@ -136,7 +136,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-1">
-                <button type="button" id="submitUnitAtt" class="btn btn-primary">Submit</button>
+                <button type="button" id="submitUnitAtt" class="btn btn-primary">Save</button>
             </div>
         </div>
     </form>

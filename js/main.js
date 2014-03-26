@@ -33,7 +33,7 @@ $(function() {
 	});
 
 	//Select Building type for editing
-	$('#selectBuildingSubmit').on('click',function(){
+	$('#editBuildingSelect').change(function(){
 		var _selectedBuilding = $('#editBuildingSelect option:selected').text();
 		console.log(_selectedBuilding);
 		$.post('/ajax/editBuildingSelect.php',{
@@ -108,7 +108,7 @@ $(function() {
 	});
 
 	//Select Unit type for editing
-	$('#selectUnitSubmit').on('click',function(){
+	$('#editUnitSelect').change(function(){
 		var _selectedUnit = $('#editUnitSelect option:selected').text();
 //		console.log(_selectedUnit);
 		$.post('ajax/editUnitSelect.php',{

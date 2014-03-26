@@ -186,19 +186,65 @@ class Mysql
 		}
 	}
 
+	//Load Buildings types
 	function loadBuildingTypes() {
-		global $buildingTypes;
-
-		$query = "SELECT building_type FROM building_types ";
+		$query = "SELECT NAME FROM BUILDINGS";
 		if($stmt = $this->conn->prepare($query)){
 			$stmt->execute();
 
-			$stmt->bind_result($buildingTypeResult);
-			while ($stmt->fetch()) {
-			
-				$buildingTypes[] = $buildingTypeResult;
+			$meta = $stmt->result_metadata();
+            while($fields = $meta->fetch_field()) {
+                $result_param[] = &$row[$fields->name];
+            }
+         	call_user_func_array(array($stmt, 'bind_result'), $result_param);
+            while ($stmt->fetch()) {
+                foreach ($row as $key => $value) {
+                    $c[$key] = $value;
+                }
+                $arr[] = $c;
+            }
+            $stmt->close();
+            return $arr;
+
+		}
+	}
+
+	//Load Attributes for single Building
+	function editBuildingSelect($building) {
+		$query = "SELECT * FROM BUILDINGS WHERE NAME = ? ";
+		if($stmt = $this->conn->prepare($query)){
+			$stmt->bind_param('s', $building);
+			$stmt->execute();
+
+			$meta = $stmt->result_metadata();
+            while($fields = $meta->fetch_field()) {
+                $result_param[] = &$row[$fields->name];
+            }
+         	call_user_func_array(array($stmt, 'bind_result'), $result_param);
+            while ($stmt->fetch()) {
+                foreach ($row as $key => $value) {
+                    $c[$key] = $value;
+                }
+                $arr[] = $c;
+            }
+            $stmt->close();
+            return $arr;
+		}
+	}
+
+	//Save Attributes for single building
+	function saveBuildingAtt($buildingHealth, $canParent, $popProvided, $buildingName) {
+		$query = "UPDATE BUILDINGS SET HEALTH=?, CAN_PARENT=?, POP_PROVIDED=? WHERE NAME=?";
+		if($stmt = $this->conn->prepare($query)){
+			$stmt->bind_param('iiis', $buildingHealth, $canParent, $popProvided, $buildingName);
+            $stmt->execute();
+
+			if ($stmt->errno) {
+			  echo "FAILURE!!! " . $stmt->error();
 			}
+			else echo "Updated {$stmt->affected_rows} rows";
 			$stmt->close();
+
 
 		}
 	}
