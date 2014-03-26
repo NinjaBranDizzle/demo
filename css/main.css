@@ -67,9 +67,9 @@ p {
 }
 
 .wrapper {
-    max-width: 1024px;
+    max-width: 768px;
     margin: 10px auto;
-    padding: 25px;
+    padding: 15px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 1px 1px 3px #999;
@@ -82,9 +82,9 @@ p {
 * ===========================================================
 */
 .mapContainer {
-    max-width: 1024px;
+    max-width: 768px;
     width: 100%;
-    height: 768px;
+    height: 576px;
     padding: 4px 0px 0px 6px;
     margin: 0 auto;
     background: #fff url(../images/map1.png) no-repeat;
@@ -254,7 +254,7 @@ p {
 * ===========================================================
 */
 /* Large desktop */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .container {
         width: 480px;
         height: 320px;
