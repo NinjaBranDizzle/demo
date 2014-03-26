@@ -3,7 +3,7 @@
 	//Define constants here
 	define('DB_SERVER', 'localhost');
 	define('DB_USER', 'root');
-	define('DB_PASSWORD', 'Hunter11');
+	define('DB_PASSWORD', 'root');
 	define('DB_NAME','tk');
 class Mysql
 {
@@ -75,15 +75,11 @@ class Mysql
     }
 
 	function loadGame()	{
-/*		global $turn, $color, $unit, $health, $weakCurse, $strongCurse, $weakBuff, $strongBuff, $airAttack, $airDefence, $groundAttack, $groundDefence, $attackRange, $moveRange, $superPower;
-
-		/*initialize grid*/
+/*
 		for ($i = 0; $i < 12; $i++)
 		{
-			/*Loop through the columns*/
 			for ($j = 0; $j < 18; $j++)	
 			{
-				/*$grid[$i][$j] = 0;*/
 				$color[$i][$j] = '';
 				$unit[$i][$j] = '';
 				$health[$i][$j] = 0;
@@ -107,7 +103,6 @@ class Mysql
 
 			$stmt->bind_result($mapRow, $mapColumn, $unitColor, $unitName, $unitHealth, $unitWeakCurse, $unitStrongCurse, $unitWeakBuff, $unitStrongBuff, $unitAirAttack, $unitAirDefence, $unitGroundAttack, $unitGroundDefence, $unitAttackRange, $unitMoveRange, $unitSuperPower);
 			while ($stmt->fetch()) {
-				/*echo ($map_row. $map_column. $unit_id);*/
 				
 				$color[$mapRow][$mapColumn] = $unitColor;
 				$unit[$mapRow][$mapColumn] = $unitName;
