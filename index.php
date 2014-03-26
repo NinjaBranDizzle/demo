@@ -110,7 +110,8 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-2">
-                    <button type="button" id="nextModal" class="btn nextButton2 btn-primary btn-lg btn-block" >
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal" ng-click="go('/editBuildings')">
+                    <button type="button" id="nextModal" class="btn nextButton2 btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal" ng-click="go('/editUnits') >
                         Next
                     </button>
                 </div>
