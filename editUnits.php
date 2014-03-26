@@ -2,6 +2,10 @@
     require_once 'data/mysql.php';
 	$mysql = New Mysql();
 	$getUnits = $mysql->loadUnitTypes();
+
+//	foreach ($getUnits as $key) {
+//printf("Unit: %s.\n", $key['UNIT_DESC']);
+//	}
 ?>
 
 <div class="row">
@@ -12,11 +16,12 @@
         <option value="null">--Unit Select--</option>
         <?
         //Show the list of unit types saved to the DB table unit_types.
-        foreach($getUnits as $unit){
+		foreach($getUnits as $unit){
             echo "<option value=".$unit['UNIT_DESC'].">".$unit['UNIT_DESC']."</option>";
         }
         ?>						
     </select>
+    <button style="float:left;margin-left:15px;" type="button" id="selectUnitSubmit" class="btn btn-primary">Select</button>
 </div>
 
     <form class="form-horizontal" role="form" id="editUnitForm">
@@ -33,13 +38,12 @@
             <div class="col-sm-1">
                 <input type="number" class="form-control" id="weakCurseMod" placeholder="0">
             </div>
-        </div>
-        <div class="form-group">
             <label for="Strong_Curse_Mod" class="col-sm-2 control-label">Strong Curse Mod</label>
 
             <div class="col-sm-1">
                 <input type="number" class="form-control" id="strongCurseMod" placeholder="0">
             </div>
+
         </div>
         <div class="form-group">
             <label for="Weak_Buff_Mod" class="col-sm-2 control-label">Weak Buff Mod</label>
@@ -47,15 +51,53 @@
             <div class="col-sm-1">
                 <input type="number" class="form-control" id="weakBuffMod" placeholder="0">
             </div>
-        </div>
-        <div class="form-group">
             <label for="Strong_Buff_Mod" class="col-sm-2 control-label">Strong Buff Mod</label>
 
             <div class="col-sm-1">
                 <input type="number" class="form-control" id="strongBuffMod" placeholder="0">
             </div>
+
+		</div>
+        <div class="form-group">
+            <label for="Air_Attack" class="col-sm-2 control-label">Air Attack</label>
+
+            <div class="col-sm-1">
+                <input type="number" class="form-control" id="airAttack" placeholder="0">
+            </div>
+            <label for="Air_Defence" class="col-sm-2 control-label">Air Defence</label>
+
+            <div class="col-sm-1">
+                <input type="number" class="form-control" id="airDefence" placeholder="0">
+            </div>
+
+		</div>
+        <div class="form-group">
+            <label for="Ground_Attack" class="col-sm-2 control-label">Ground Attack</label>
+
+            <div class="col-sm-1">
+                <input type="number" class="form-control" id="groundAttack" placeholder="0">
+            </div>
+            <label for="Ground_Defence" class="col-sm-2 control-label">Ground Defence</label>
+
+            <div class="col-sm-1">
+                <input type="number" class="form-control" id="groundDefence" placeholder="0">
+            </div>
         </div>
         <div class="form-group">
+            <label for="Attack_Range" class="col-sm-2 control-label">Attack Range</label>
+
+            <div class="col-sm-1">
+                <input type="number" class="form-control" id="attackRange" placeholder="0">
+            </div>
+            <label for="Move_Range" class="col-sm-2 control-label">Movement Range</label>
+
+            <div class="col-sm-1">
+                <input type="number" class="form-control" id="moveRange" placeholder="0">
+            </div>
+        </div>
+
+<!--
+		<div class="form-group">
             <label for="Parent_Structure" class="col-sm-2 control-label">Parent Structure</label>
 
             <div class="col-sm-5">
@@ -63,6 +105,7 @@
                        placeholder="Enter the name of the Parent Structure">
             </div>
         </div>
+
         <div class="form-group">
             <label for="Can_Fly" class="col-sm-2 control-label">Can Fly</label>
 
@@ -81,6 +124,7 @@
                 </div>
             </div>
         </div>
+-->
         <div class="form-group">
             <label for="Has_Superpower" class="col-sm-2 control-label">Has Super Power</label>
 
@@ -92,7 +136,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-1">
-                <button type="button" id="submitUnitAtt" class="btn btn-primary">Save</button>
+                <button type="button" id="submitUnitAtt" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
