@@ -6,10 +6,6 @@ $mysql = New Mysql();
 $mysql->loadGame();
 drawgrid();
 
-if ($_GET['saveButton']) {
-    $mysql->saveGame();
-}
-
 ?>
 
 <div class="buttonContainer clearfix">
