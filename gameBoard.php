@@ -1,14 +1,6 @@
 <?php
 require 'gameGrid.php';
-/*require 'gamedb.php';*/
-require 'data/mysql.php';
-$mysql = New Mysql();
-$mysql->loadGame();
 drawgrid();
-
-if ($_GET['saveButton']) {
-    $mysql->saveGame();
-}
 
 ?>
 
@@ -27,4 +19,3 @@ if ($_GET['saveButton']) {
     </div>
 </div>
 
-<button id="save" class=" btn btn-success btn-sm">Save</button>
