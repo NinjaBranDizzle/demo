@@ -1,5 +1,9 @@
 //On Load
 $(function() {
+	//Start new single player game
+	$('#startSingle').on('click', function(){
+		$('#selectBuilding').slideDown();
+	});
 
 	//Turn Grid Off
 	$('#toggleGridOff').click(function() {
@@ -33,10 +37,10 @@ $(function() {
 	});
 
 	//Select Building type for editing
-	$('#selectBuildingSubmit').on('click',function(){
+	$('#editBuildingSelect').change(function(){
 		var _selectedBuilding = $('#editBuildingSelect option:selected').text();
 		console.log(_selectedBuilding);
-		$.post('/ajax/editBuildingSelect.php',{
+		$.post('ajax/editBuildingSelect.php',{
 				task : 'getBuilding',
 				selectedBuilding : _selectedBuilding
 			}
@@ -54,6 +58,10 @@ $(function() {
 		});
 	});
 
+	$('#nextModal').on('click', function(){
+		saveBuildingAttributes()
+	});
+
 	//Populate Building Attributes for Editing
 	function populateBuildingAttributes(data){
 
@@ -69,7 +77,42 @@ $(function() {
 		$('#popProvided').val(data[0].POP_PROVIDED);
 
 	}
+	//Save Building Attributes to Database
+	function saveBuildingAttributes(){
+		var _buildingName = $('#editBuildingSelect option:selected').text();
+		var _buildingHealth = $('#buildingHealth').val();
 
+		if ($('#canParent').is(':checked')){
+			var _canParent = '1';
+		}else
+			var _canParent = '0';
+
+		var _popProvided = $('#popProvided').val();
+		//alert ("Building Name: " + _buildingName + " Building Health: " + _buildingHealth + " Can Parent: " + _canParent + " Pop Provided: " + _popProvided);
+		
+		//Ajax post to save to database
+		$.post('ajax/editBuildingSelect.php',{
+				task : 'saveBuilding',
+				buildingName : _buildingName,
+				buildingHealth : _buildingHealth,
+				canParent : _canParent,
+				popProvided : _popProvided
+			}
+		)
+		.error(
+			function(data){
+				console.log("Error Saving Building to database");
+				console.log(data);
+			})
+		.success(
+			function(data){
+				console.log("Success Saving Building to database");
+				console.log(data);
+				alert("Building Attributes have been saved!");
+				
+		});
+
+	};
 	//Save Building Attributes to Database
 	$('#submitBuildingAtt').on('click', function(){
 		var _buildingName = $('#editBuildingSelect option:selected').text();
@@ -108,10 +151,10 @@ $(function() {
 	});
 
 	//Select Unit type for editing
-	$('#selectUnitSubmit').on('click',function(){
+	$('#editUnitSelect').change(function(){
 		var _selectedUnit = $('#editUnitSelect option:selected').text();
 		console.log(_selectedUnit);
-		$.post('/ajax/editUnitSelect.php',{
+		$.post('ajax/editUnitSelect.php',{
 				task : 'getUnit',
 				selectedUnit : _selectedUnit
 			}
@@ -187,7 +230,7 @@ $(function() {
 		//alert ("Unit Name: " + _unitDesc + "Unit Health: " + _unitHealth + ", Weak Curse Mod: " + _weakCurseMod + ", Strong Curse Mod: " + _strongCurseMod + ", Weak Buff Mod: " + _weakBuffMod + ", Strong Buff Mod: " + _strongBuffMod + ", Parent Structure: " + _parentStructure + ", Can Fly: " + _canFly + ", Can Drive:" + _canDrive + ", Super Power: " + _hasSuperPower);
 		
 		//Ajax post to save to database
-		$.post('/ajax/editUnitSelect.php',{
+		$.post('ajax/editUnitSelect.php',{
 				task : 'saveUnit',
 				unitDesc : _unitDesc,
 				unitHealth : _unitHealth,
@@ -213,7 +256,6 @@ $(function() {
 				alert("Unit Attributes have been saved!");
 				
 		});
-
 	});
 
 });

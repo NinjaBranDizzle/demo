@@ -17,6 +17,16 @@ p {
     font-size: 14px;
     line-height: auto;
 }
+#selectBuilding{
+    width: 630px;
+    position: absolute;
+    top: 30px;
+    left: 30%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid #666;
+}
 
 .clearfix:after {
     visibility: hidden;
