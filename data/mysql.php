@@ -75,54 +75,7 @@ class Mysql
     }
 
 	function loadGame()	{
-/*
-		for ($i = 0; $i < 12; $i++)
-		{
-			for ($j = 0; $j < 18; $j++)	
-			{
-				$color[$i][$j] = '';
-				$unit[$i][$j] = '';
-				$health[$i][$j] = 0;
-				$weakCurse[$i][$j] = 0;
-				$strongCurse[$i][$j] = 0;
-				$weakBuff[$i][$j] = 0;
-				$strongBuff[$i][$j] = 0;
-				$airAttack[$i][$j] = 0;
-				$airDefence[$i][$j] = 0;
-				$groundAttack[$i][$j] = 0;
-				$groundDefence[$i][$j] = 0;
-				$attackRange[$i][$j] = 0;
-				$moveRange[$i][$j] = 0;
-				$superPower[$i][$j] = 0;
-			}
-		}
 
-		$query = "SELECT map_row, map_column, color, unit, health, weak_curse, strong_curse, weak_buff, strong_buff, air_attack, air_defence, ground_attack, ground_defence, attack_range, move_range, super_power FROM map WHERE MAP_NAME = 'Blitzkrieg' ";
-		if($stmt = $this->conn->prepare($query)){
-			$stmt->execute();
-
-			$stmt->bind_result($mapRow, $mapColumn, $unitColor, $unitName, $unitHealth, $unitWeakCurse, $unitStrongCurse, $unitWeakBuff, $unitStrongBuff, $unitAirAttack, $unitAirDefence, $unitGroundAttack, $unitGroundDefence, $unitAttackRange, $unitMoveRange, $unitSuperPower);
-			while ($stmt->fetch()) {
-				
-				$color[$mapRow][$mapColumn] = $unitColor;
-				$unit[$mapRow][$mapColumn] = $unitName;
-				$health[$mapRow][$mapColumn] = $unitHealth;
-				$weakCurse[$mapRow][$mapColumn] = $unitWeakCurse;
-				$strongCurse[$mapRow][$mapColumn] = $unitStrongCurse;
-				$weakBuff[$mapRow][$mapColumn] = $unitWeakBuff;
-				$strongBuff[$mapRow][$mapColumn] = $unitStrongBuff;
-				$airAttack[$mapRow][$mapColumn] = $unitAirAttack;
-				$airDefence[$mapRow][$mapColumn] = $unitAirDefence;
-				$groundAttack[$mapRow][$mapColumn] = $unitGroundAttack;
-				$groundDefence[$mapRow][$mapColumn] = $unitGroundDefence;
-				$attackRange[$mapRow][$mapColumn] = $unitAttackRange;
-				$moveRange[$mapRow][$mapColumn] = $unitMoveRange;
-				$superPower[$mapRow][$mapColumn] = $unitSuperPower;
-			}
-			$stmt->close();
-
-		}
-*/
 
 		$query = "SELECT map_row, map_column, color, unit, health, weak_curse, strong_curse, weak_buff, strong_buff, air_attack, air_defence, ground_attack, ground_defence, attack_range, move_range, super_power FROM map WHERE MAP_NAME = 'Blitzkrieg' ";
 		if($stmt = $this->conn->prepare($query)){
@@ -137,7 +90,6 @@ class Mysql
             while ($stmt->fetch()) {
 				foreach ($row as $key => $value) {
                     $c[$key] = $value;
-//printf("Unit: %s.\n", $c[$key]);
                 }
                 $arr[] = $c;
             }
@@ -146,6 +98,7 @@ class Mysql
 
 		}
 	}
+
 
 	function saveGame(){
 		global $turn, $color, $unit, $health, $weakCurse, $strongCurse, $weakBuff, $strongBuff, $airAttack, $airDefence, $groundAttack, $groundDefence, $attackRange, $moveRange, $superPower;

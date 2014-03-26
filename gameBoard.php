@@ -1,9 +1,5 @@
 <?php
 require 'gameGrid.php';
-/*require 'gamedb.php';*/
-require 'data/mysql.php';
-$mysql = New Mysql();
-$mysql->loadGame();
 drawgrid();
 
 ?>
@@ -23,4 +19,3 @@ drawgrid();
     </div>
 </div>
 
-<button id="save" class=" btn btn-success btn-sm">Save</button>
