@@ -41,7 +41,7 @@
 				if (!isset($color[$i][$j]))
 				{
 					echo ('<img class="unitPopup" src="images/units/emptyCell.gif" id="'.$i.'-'.$j.'" onclick="cellClicked('.$i.','.$j.',\'\',\'\');" />');
-					echo ('<div id="'.$i.'-'.$j.'Content" class="unitStats"></div>');
+					echo ('<div id="'.$i.'-'.$j.'Content" class="noUnitStats"></div>');
 
 				} else {
 					echo ('<img class="unitPopup" id="'.$i.'-'.$j.'" src="images/units/'.$color[$i][$j].$unit[$i][$j].'Jitter.gif" onclick="cellClicked('.$i.','.$j.',\''.$color[$i][$j].'\',\''.$unit[$i][$j].'\','.$health[$i][$j].','.$weakCurse[$i][$j].','.$strongCurse[$i][$j].','.$weakBuff[$i][$j].','.$strongBuff[$i][$j].','.$airAttack[$i][$j].','.$airDefence[$i][$j].','.$groundAttack[$i][$j].','.$groundDefence[$i][$j].','.$attackRange[$i][$j].','.$moveRange[$i][$j].','.$superPower[$i][$j].');" />');

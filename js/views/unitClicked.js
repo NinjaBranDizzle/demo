@@ -168,6 +168,7 @@
 				eval("document.images['"+document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value+"'].src = 'images/units/emptyCell.gif'");
 				//Clear the hover menu
 				document.getElementById(document.gamedata.fromRow.value + '-' + document.gamedata.fromCol.value + 'Content').innerHTML = "";
+				document.getElementById(document.gamedata.fromRow.value + '-' + document.gamedata.fromCol.value + 'Content').className = "noUnitStats";
 
 				//Reset the toRow values
 				document.gamedata.toRow.value = row;
@@ -179,6 +180,7 @@
 				eval("document.images['"+row+"-"+col+"'].src = 'images/units/" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "Jitter.gif'");
 				//Create a new hover menu
 				document.getElementById(row + '-' + col + 'Content').innerHTML = "<h4>" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "</h4><p>Health: " + document.gamedata.fromHealth.value + "</p><p>Super Power: " + document.gamedata.fromSuperPower.value + "/1</p></div>";
+				document.getElementById(row + '-' + col + 'Content').className = "unitStats";
 				
 				changeTurn(turn);
 				isFirstClick = true;
@@ -258,6 +260,7 @@
 			document.getElementById(row + "-" + col).setAttribute("src", "images/units/emptyCell.gif");
 			//Clear the hover menu
 			document.getElementById(row + '-' + col + 'Content').innerHTML = "";
+			document.getElementById(row + '-' + col + 'Content').className = "noUnitStats";
 
 		} else {
 			//Reassign the new health value
@@ -266,6 +269,7 @@
 
 			//Update the hover menu
 			document.getElementById(row + '-' + col + 'Content').innerHTML = "<h4>" + color + unit + "</h4><p>Health: " + health + "</p><p>Super Power: " + superPower + "/1</p></div>";
+            document.getElementById(row + '-' + col + 'Content').className = "unitStats";
 		}
 
 		var msg = document.gamedata.fromColor.value + " " + document.gamedata.fromUnit.value + " attacking " + color + " " + unit + "\n\n";
@@ -295,7 +299,12 @@
 		changeTurn(turn);
 		isFirstClick = true;	
 	}
+	function playMusic() {
+		var sound = new Audio();
+		sound.src = "sounds/Alice.mp3";
+		sound.play();
 
+	}
 	function playSound(soundName) {
 		//audio.online-convert.com/convert-to-mp3
 		//soundbible.com

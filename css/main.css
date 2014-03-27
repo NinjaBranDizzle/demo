@@ -166,6 +166,10 @@ p {
     text-align: right;
 }
 
+.noUnitStats {
+    display: none;
+}
+
 .unitStats {
     display: none;
     position: absolute;
