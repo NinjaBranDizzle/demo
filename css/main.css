@@ -249,6 +249,67 @@ p {
 /*
 * ===========================================================
 *
+* =======================Credits=====================
+*
+* ===========================================================
+*/
+
+#titles
+{
+	position: absolute;
+	width: 90em;
+	height: 120em;
+	bottom: 0;
+	left: 10%;
+	/*margin-left: -9em;*/
+	font-size: 50%;
+	font-weight: bold;
+	color: yellow;
+	text-align: justify;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+	font-family: "Droid Sans", arial, verdana, sans-serif;
+}
+#titles p, H1, H2
+{
+	text-align: justify;
+	margin: 0.8em 0;
+}
+#titles p.center, H1.center, H2.center
+{
+	text-align: center;
+}
+#titlecontent
+{
+	position: absolute;
+	top: 100%;
+	-webkit-animation: scroll 100s linear 4s infinite;
+	-moz-animation: scroll 100s linear 4s infinite;
+	-ms-animation: scroll 100s linear 4s infinite;
+	-o-animation: scroll 100s linear 4s infinite;
+	animation: scroll 100s linear 4s infinite;
+}
+#titles:after
+{
+	position: absolute;
+	content: ' ';
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 60%;
+	background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+	pointer-events: none;
+}
+
+
+@keyframes scroll {
+	0% { top: 100%; }
+	100% { top: -270%; }
+}
+/*
+* ===========================================================
+*
 * ========================Media Queries======================
 *
 * ===========================================================
