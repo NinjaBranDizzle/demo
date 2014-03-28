@@ -67,9 +67,9 @@ p {
 }
 
 .wrapper {
-    max-width: 1024px;
+    max-width: 768px;
     margin: 10px auto;
-    padding: 25px;
+    padding: 15px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 1px 1px 3px #999;
@@ -82,9 +82,9 @@ p {
 * ===========================================================
 */
 .mapContainer {
-    max-width: 1024px;
+    max-width: 768px;
     width: 100%;
-    height: 768px;
+    height: 576px;
     padding: 4px 0px 0px 6px;
     margin: 0 auto;
     background: #fff url(../images/map1.png) no-repeat;
@@ -166,6 +166,10 @@ p {
     text-align: right;
 }
 
+.noUnitStats {
+    display: none;
+}
+
 .unitStats {
     display: none;
     position: absolute;
@@ -174,6 +178,7 @@ p {
     padding: 5px;
     margin-left: 50px;
     text-align: left;
+	z-index:1;
 }
 
 .unitStats h4 {
@@ -249,15 +254,84 @@ p {
 /*
 * ===========================================================
 *
+* =======================Credits=====================
+*
+* ===========================================================
+*/
+
+#titles
+{
+	position: absolute;
+	width: 90em;
+	height: 120em;
+	bottom: 0;
+	left: 10%;
+	/*margin-left: -9em;*/
+	font-size: 50%;
+	font-weight: bold;
+	color: yellow;
+	text-align: justify;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+	font-family: "Droid Sans", arial, verdana, sans-serif;
+}
+#titles p, H1, H2
+{
+	text-align: justify;
+	margin: 0.8em 0;
+}
+#titles p.center, H1.center, H2.center
+{
+	text-align: center;
+}
+#titlecontent
+{
+	position: absolute;
+	top: 100%;
+	-webkit-animation: scroll 100s linear 4s infinite;
+	-moz-animation: scroll 100s linear 4s infinite;
+	-ms-animation: scroll 100s linear 4s infinite;
+	-o-animation: scroll 100s linear 4s infinite;
+	animation: scroll 100s linear 4s infinite;
+}
+#titles:after
+{
+	position: absolute;
+	content: ' ';
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 60%;
+	background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+	pointer-events: none;
+}
+
+
+@keyframes scroll {
+	0% { top: 100%; }
+	100% { top: -270%; }
+}
+/*
+* ===========================================================
+*
 * ========================Media Queries======================
 *
 * ===========================================================
 */
 /* Large desktop */
-@media (max-width: 1024px) {
-    .container {
-        width: 480px;
-        height: 320px;
+@media (max-width: 768px)  {
+    .Container {
+        width: 400px;
+        height: 300px;
+        padding: 4px 0px 0px 6px;
+        margin: 0 auto;
+        background: #fff url(../images/map1-480.png) no-repeat;
+    }
+
+    .MapContainer {
+        width: 450px;
+        height: 300px;
         padding: 4px 0px 0px 6px;
         margin: 0 auto;
         background: #fff url(../images/map1-480.png) no-repeat;
@@ -266,24 +340,57 @@ p {
     .cell {
         width: 24px;
         height: 24px;
-        text-align: center;
-        float: left;
-        border: 1px solid #999;
     }
+	body {
+	  font-size: 11px;
+	}
+	.nav > li > a {
+	  padding: 8px 10px;
+	}
+
+	.form-control {
+	  width: 30px;
+	  height: 24px;
+	  padding: 2px 4px;
+	  font-size: 11px;
+	}
 }
 
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-    ...
-}
+/* Large desktop */
+@media (max-width: 400px) {
+    .Container {
+        width: 300px;
+        height: 200px;
+        padding: 4px 0px 0px 6px;
+        margin: 0 auto;
+        background: #fff url(../images/map1-480.png) no-repeat;
+    }
 
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-    ...
-}
+    .MapContainer {
+        width: 380px;
+        height: 262px;
+        padding: 4px 0px 0px 6px;
+        margin: 0 auto;
+        background: #fff url(../images/map1-480.png) no-repeat;
+    }
 
-/* Landscape phones and down */
-@media (max-width: 480px) {
-    ...
-}
+    .cell {
+        width: 20px;
+        height: 20px;
+    }
 
+	body {
+	  font-size: 8px;
+	}
+	.nav > li > a {
+	  padding: 1px 2px;
+	}
+
+	.form-control {
+	  width: 25px;
+	  height: 18px;
+	  padding: 2px 4px;
+	  font-size: 8px;
+	}
+
+}

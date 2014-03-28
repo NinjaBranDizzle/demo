@@ -51,6 +51,7 @@
         <li><a href="#buildings" data-toggle="tab">Edit Buildings</a></li>
         <li><a href="#scores" data-toggle="tab">Score Board</a></li>
         <li><a href="login.php?status=loggedout">Logout</a></li>
+        <li><a href="#credits" data-toggle="tab" onclick="playMusic()">Credits</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -60,6 +61,7 @@
         <div class="tab-pane" id="units"><?php include 'editUnits.php'; ?></div>
         <div class="tab-pane" id="buildings"><?php include 'editBuildings.php'; ?></div>
         <div class="tab-pane" id="scores"><?php include 'scoreBoard.php'; ?></div>
+        <div class="tab-pane" id="credits"><?php include 'credits.php'; ?></div>
     </div>
 </div>
 <!--/wrapper-->
