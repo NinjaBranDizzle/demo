@@ -1,5 +1,22 @@
 //On Load
 $(function() {
+	$('#startSingle').on('click', function(){
+		$('#selectBuilding').slideDown();
+		$('#nextModalOne').show();
+		$('#submitBuildingAtt').hide();
+	});
+
+	$('#nextModalOne').on('click', function(){
+		saveBuildingAttributes();
+		$('#selectBuilding').slideUp();
+		$('#selectUnit').slideDown();
+		$('#nextModalTwo').show();
+		$('#submitUnitAtt').hide();
+	});
+
+	$('#nextModalTwo').on('click', function(){
+		saveUnitAttributes();
+	});
 
 	//Turn Grid Off
 	$('#toggleGridOff').click(function() {
@@ -107,6 +124,43 @@ $(function() {
 
 	});
 
+	//Save Building Attributes to Database
+	function saveBuildingAttributes(){
+		var _buildingName = $('#editBuildingSelect option:selected').text();
+		var _buildingHealth = $('#buildingHealth').val();
+
+		if ($('#canParent').is(':checked')){
+			var _canParent = '1';
+		}else
+			var _canParent = '0';
+
+		var _popProvided = $('#popProvided').val();
+		//alert ("Building Name: " + _buildingName + " Building Health: " + _buildingHealth + " Can Parent: " + _canParent + " Pop Provided: " + _popProvided);
+		
+		//Ajax post to save to database
+		$.post('ajax/editBuildingSelect.php',{
+				task : 'saveBuilding',
+				buildingName : _buildingName,
+				buildingHealth : _buildingHealth,
+				canParent : _canParent,
+				popProvided : _popProvided
+			}
+		)
+		.error(
+			function(data){
+				console.log("Error Saving Building to database");
+				console.log(data);
+			})
+		.success(
+			function(data){
+				console.log("Success Saving Building to database");
+				console.log(data);
+				alert("Building Attributes have been saved!");
+				
+		});
+
+	};
+
 	//Select Unit type for editing
 	$('#editUnitSelect').change(function(){
 		var _selectedUnit = $('#editUnitSelect option:selected').text();
@@ -170,8 +224,12 @@ $(function() {
 
 	}
 
-	//Save Unit Attributes to Database
 	$('#submitUnitAtt').on('click', function(){
+		saveUnitAttributes();
+	});
+
+	//Save Unit Attributes to Database
+	function saveUnitAttributes(){
 		var _unitDesc = $('#editUnitSelect option:selected').text();
 		var _unitHealth = $('#unitHealth').val();
 		var _weakCurseMod = $('#weakCurseMod').val();
@@ -238,6 +296,6 @@ $(function() {
 				
 		});
 
-	});
+	}
 
 });

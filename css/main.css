@@ -17,7 +17,7 @@ p {
     font-size: 14px;
     line-height: auto;
 }
-#selectBuilding{
+#selectBuilding, #selectUnit{
     width: 630px;
     position: absolute;
     top: 30px;

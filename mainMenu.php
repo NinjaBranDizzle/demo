@@ -22,7 +22,13 @@
    </div><!-- /Main Menu-->
    <div id="selectBuilding" style="display:none;">
       <h1>Choose Your Map Settings</h1>
-      <?php //include_once "editBuildings.php"; ?>
+      <?php include_once "editBuildings.php"; ?>
    </div>
+
+   <div id="selectUnit" style="display:none;">
+      <h1>Choose Your Unit Settings</h1>
+      <?php include_once "editUnits.php"; ?>
+   </div>
+
 </body>
 </html>

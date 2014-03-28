@@ -44,6 +44,7 @@
         <div class="form-group">
             <div class="col-sm-1">
                 <button type="button" id="submitBuildingAtt" class="btn btn-primary">Save</button>
+                <button type="button" id="nextModalOne" style="display:none;" class="btn btn-primary">Next</button>
             </div>
         </div>
     </form>

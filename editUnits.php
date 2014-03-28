@@ -28,19 +28,19 @@
         <div class="form-group">
             <label for="Health" class="col-sm-2 control-label">Unit Health</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="unitHealth" placeholder="0">
             </div>
         </div>
         <div class="form-group">
             <label for="Weak_Curse_Mod" class="col-sm-2 control-label">Weak Curse Mod</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="weakCurseMod" placeholder="0">
             </div>
             <label for="Strong_Curse_Mod" class="col-sm-2 control-label">Strong Curse Mod</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="strongCurseMod" placeholder="0">
             </div>
 
@@ -48,12 +48,12 @@
         <div class="form-group">
             <label for="Weak_Buff_Mod" class="col-sm-2 control-label">Weak Buff Mod</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="weakBuffMod" placeholder="0">
             </div>
             <label for="Strong_Buff_Mod" class="col-sm-2 control-label">Strong Buff Mod</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="strongBuffMod" placeholder="0">
             </div>
 
@@ -61,12 +61,12 @@
         <div class="form-group">
             <label for="Air_Attack" class="col-sm-2 control-label">Air Attack</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="airAttack" placeholder="0">
             </div>
             <label for="Air_Defence" class="col-sm-2 control-label">Air Defence</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="airDefence" placeholder="0">
             </div>
 
@@ -74,24 +74,24 @@
         <div class="form-group">
             <label for="Ground_Attack" class="col-sm-2 control-label">Ground Attack</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="groundAttack" placeholder="0">
             </div>
             <label for="Ground_Defence" class="col-sm-2 control-label">Ground Defence</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="groundDefence" placeholder="0">
             </div>
         </div>
         <div class="form-group">
             <label for="Attack_Range" class="col-sm-2 control-label">Attack Range</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="attackRange" placeholder="0">
             </div>
             <label for="Move_Range" class="col-sm-2 control-label">Movement Range</label>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <input type="number" class="form-control" id="moveRange" placeholder="0">
             </div>
         </div>
@@ -137,6 +137,7 @@
         <div class="form-group">
             <div class="col-sm-1">
                 <button type="button" id="submitUnitAtt" class="btn btn-primary">Save</button>
+                <button type="button" id="nextModalTwo" class="btn btn-primary">Next</button>
             </div>
         </div>
     </form>
