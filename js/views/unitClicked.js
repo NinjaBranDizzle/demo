@@ -286,7 +286,15 @@
 
 	function attack(turn, row, col, color, unit, health, weakCurse, strongCurse, weakBuff, strongBuff, airAttack, airDefence, groundAttack, groundDefence, attackRange, moveRange, superPower)
 	{
-		playSound("MemoExplosion");
+		if (document.gamedata.fromUnit.value == "Tower")
+		{
+			playSound("MemoTower");
+		} else if (document.gamedata.fromUnit.value == "Helicopter") {
+			playSound("MemoDoDoDo");
+		} else {
+			playSound("MemoExplosion");		
+		}
+
 		eval("document.images['"+row+"-"+col+"'].src = 'images/explosion.gif'");
 		setTimeout(attackResult(turn, row, col, color, unit, health, weakCurse, strongCurse, weakBuff, strongBuff, airAttack, airDefence, groundAttack, groundDefence, attackRange, moveRange, superPower), 50000);
 
