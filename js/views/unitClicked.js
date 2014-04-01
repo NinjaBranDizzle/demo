@@ -128,7 +128,6 @@
 	function cellClickedSecond(turn, row, col, color, unit, health, weakCurse, strongCurse, weakBuff, strongBuff, airAttack, airDefence, groundAttack, groundDefence, attackRange, moveRange, superPower)
 	{
 //alert("cellClickedSecond " + row + col + turn + " " + color + unit + "fromRow" + document.gamedata.fromRow.value + "fromCol" + document.gamedata.fromCol.value);
-		eval("document.images['"+document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value+"'].src = 'images/units/" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "Jitter.gif'");
 		isFirstClick = false;
 
 		if ((document.gamedata.fromRow.value == row)
@@ -157,41 +156,89 @@
 		} else {
 			if (unit === "")
 			{
-				playSound("Memo" + document.gamedata.fromUnit.value);
-				createRemoveHalo(0, document.gamedata.fromRow.value, document.gamedata.fromCol.value, document.gamedata.fromAttackRange.value, document.gamedata.fromMoveRange.value, row, col);
+				var fromRow = (document.gamedata.fromRow.value * 1); 
+				var fromCol = (document.gamedata.fromCol.value * 1);
+				var fromMoveRange = (document.gamedata.fromMoveRange.value * 1);
 
-				isGoodMove = true;
+				var maxMoveRowRange = (fromRow + fromMoveRange);
+				var minMoveRowRange = (fromRow - fromMoveRange);
+				var maxMoveColRange = (fromCol + fromMoveRange);
+				var minMoveColRange = (fromCol - fromMoveRange);
+
+//alert("row " + row + " col " + col + "  document.gamedata.fromRow.value " +  document.gamedata.fromRow.value + " document.gamedata.fromCol.value " + document.gamedata.fromCol.value + " document.gamedata.fromMoveRange.value " + document.gamedata.fromMoveRange.value);
+//alert("row " + row + " col " + col + " maxMoveRowRange " + maxMoveRowRange + " minMoveRowRange " + minMoveRowRange + " maxMoveColRange " + maxMoveColRange + " minMoveColRange " + minMoveColRange);
+				if ((row > maxMoveRowRange) || 
+					(row < minMoveRowRange) || 
+					(col > maxMoveColRange) ||
+					(col < minMoveColRange))//Make sure the new location is within the movement range of the unit
+				{
+					//alert("That cell is outside of the movement range for that unit.");
+					//Just don't do anything.
+					return;
+				} else {
+
+					playSound("Memo" + document.gamedata.fromUnit.value);
+					createRemoveHalo(0, document.gamedata.fromRow.value, document.gamedata.fromCol.value, document.gamedata.fromAttackRange.value, document.gamedata.fromMoveRange.value, row, col);
+
+					isGoodMove = true;
 //alert("setting empty cell" + document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value);
-				//set the from cell to an empty image.
-				var js = "cellClicked(" + document.gamedata.fromRow.value + "," + document.gamedata.fromCol.value + ",'','','','','');";
-				document.getElementById(document.gamedata.fromRow.value + "-" + document.gamedata.fromCol.value).setAttribute("onclick", js);
-				eval("document.images['"+document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value+"'].src = 'images/units/emptyCell.gif'");
-				//Clear the hover menu
-				document.getElementById(document.gamedata.fromRow.value + '-' + document.gamedata.fromCol.value + 'Content').innerHTML = "";
-				document.getElementById(document.gamedata.fromRow.value + '-' + document.gamedata.fromCol.value + 'Content').className = "noUnitStats";
+					//set the from cell to an empty image.
+					var js = "cellClicked(" + document.gamedata.fromRow.value + "," + document.gamedata.fromCol.value + ",'','','','','');";
+					document.getElementById(document.gamedata.fromRow.value + "-" + document.gamedata.fromCol.value).setAttribute("onclick", js);
+					eval("document.images['"+document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value+"'].src = 'images/units/emptyCell.gif'");
+					//Clear the hover menu
+					document.getElementById(document.gamedata.fromRow.value + '-' + document.gamedata.fromCol.value + 'Content').innerHTML = "";
+					document.getElementById(document.gamedata.fromRow.value + '-' + document.gamedata.fromCol.value + 'Content').className = "noUnitStats";
 
-				//Reset the toRow values
-				document.gamedata.toRow.value = row;
-				document.gamedata.toCol.value = col;
+					//Reset the toRow values
+					document.gamedata.toRow.value = row;
+					document.gamedata.toCol.value = col;
 
-				var js = "cellClicked(" + row + "," + col + ",'" + document.gamedata.fromColor.value + "','" + document.gamedata.fromUnit.value + "'," + document.gamedata.fromHealth.value + "," + document.gamedata.fromWeakCurse.value + "," + document.gamedata.fromStrongCurse.value + "," + document.gamedata.fromWeakBuff.value + "," + document.gamedata.fromStrongBuff.value + "," + document.gamedata.fromAirAttack.value + "," + document.gamedata.fromAirDefence.value + "," + document.gamedata.fromGroundAttack.value + "," + document.gamedata.fromGroundDefence.value + "," + document.gamedata.fromAttackRange.value + "," + document.gamedata.fromMoveRange.value + "," + document.gamedata.fromSuperPower.value + ");";
-				document.getElementById(row + "-" + col).setAttribute("onclick", js);
-				//document.getElementById(row + "-" + col).onclick = 'alert("hello");'
-				eval("document.images['"+row+"-"+col+"'].src = 'images/units/" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "Jitter.gif'");
-				//Create a new hover menu
-				document.getElementById(row + '-' + col + 'Content').innerHTML = "<h4>" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "</h4><p>Health: " + document.gamedata.fromHealth.value + "</p><p>Super Power: " + document.gamedata.fromSuperPower.value + "/1</p></div>";
-				document.getElementById(row + '-' + col + 'Content').className = "unitStats";
-				
-				changeTurn(turn);
-				isFirstClick = true;
+					var js = "cellClicked(" + row + "," + col + ",'" + document.gamedata.fromColor.value + "','" + document.gamedata.fromUnit.value + "'," + document.gamedata.fromHealth.value + "," + document.gamedata.fromWeakCurse.value + "," + document.gamedata.fromStrongCurse.value + "," + document.gamedata.fromWeakBuff.value + "," + document.gamedata.fromStrongBuff.value + "," + document.gamedata.fromAirAttack.value + "," + document.gamedata.fromAirDefence.value + "," + document.gamedata.fromGroundAttack.value + "," + document.gamedata.fromGroundDefence.value + "," + document.gamedata.fromAttackRange.value + "," + document.gamedata.fromMoveRange.value + "," + document.gamedata.fromSuperPower.value + ");";
+					document.getElementById(row + "-" + col).setAttribute("onclick", js);
+					//document.getElementById(row + "-" + col).onclick = 'alert("hello");'
+					eval("document.images['"+row+"-"+col+"'].src = 'images/units/" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "Jitter.gif'");
+					//Create a new hover menu
+					document.getElementById(row + '-' + col + 'Content').innerHTML = "<h4>" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "</h4><p>Health: " + document.gamedata.fromHealth.value + "</p><p>Super Power: " + document.gamedata.fromSuperPower.value + "/1</p></div>";
+					document.getElementById(row + '-' + col + 'Content').className = "unitStats";
+
+					changeTurn(turn);
+					isFirstClick = true;
+
+				}
 			} else if (unit != '' && color != turn)	{
-				createRemoveHalo(0, document.gamedata.fromRow.value, document.gamedata.fromCol.value, document.gamedata.fromAttackRange.value, document.gamedata.fromMoveRange.value, row, col);
+				var fromRow = (document.gamedata.fromRow.value * 1); 
+				var fromCol = (document.gamedata.fromCol.value * 1);
+				var fromAttackRange = (document.gamedata.fromAttackRange.value * 1);
 
-				//ATTACK!!
-				attack(turn, row, col, color, unit, health, weakCurse, strongCurse, weakBuff, strongBuff, airAttack, airDefence, groundAttack, groundDefence, attackRange, moveRange, superPower);
+				var maxAttackRowRange = (fromRow + fromAttackRange);
+				var minAttackRowRange = (fromRow - fromAttackRange);
+				var maxAttackColRange = (fromCol + fromAttackRange);
+				var minAttackColRange = (fromCol - fromAttackRange);
+
+//alert("row " + row + " col " + col + "  document.gamedata.fromRow.value " +  document.gamedata.fromRow.value + " document.gamedata.fromCol.value " + document.gamedata.fromCol.value + " document.gamedata.fromMoveRange.value " + document.gamedata.fromMoveRange.value);
+//alert("row " + row + " col " + col + " maxMoveRowRange " + maxMoveRowRange + " minMoveRowRange " + minMoveRowRange + " maxMoveColRange " + maxMoveColRange + " minMoveColRange " + minMoveColRange);
+				if ((row > maxAttackRowRange) || 
+					(row < minAttackRowRange) || 
+					(col > maxAttackColRange) ||
+					(col < minAttackColRange))//Make sure the new location is within the movement range of the unit
+				{
+					//alert("That cell is outside of the attack range for that unit.");
+					//Just don't do anything.
+					return;
+				} else {
+				
+					eval("document.images['"+document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value+"'].src = 'images/units/" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "Jitter.gif'");
+
+					createRemoveHalo(0, document.gamedata.fromRow.value, document.gamedata.fromCol.value, document.gamedata.fromAttackRange.value, document.gamedata.fromMoveRange.value, row, col);
+
+					//ATTACK!!
+					attack(turn, row, col, color, unit, health, weakCurse, strongCurse, weakBuff, strongBuff, airAttack, airDefence, groundAttack, groundDefence, attackRange, moveRange, superPower);
 			
-
+				}
 			} else {
+				eval("document.images['"+document.gamedata.fromRow.value+"-"+document.gamedata.fromCol.value+"'].src = 'images/units/" + document.gamedata.fromColor.value + document.gamedata.fromUnit.value + "Jitter.gif'");
+
 				//Choosing a different unit for the first click
 				isFirstClick = true;
 				cellClickedFirst(turn, row, col, color, unit, health, weakCurse, strongCurse, weakBuff, strongBuff, airAttack, airDefence, groundAttack, groundDefence, attackRange, moveRange, superPower);
