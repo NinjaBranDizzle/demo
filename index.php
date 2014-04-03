@@ -1,10 +1,10 @@
 <?php
-//session_start();
-//require_once 'controllers/users.php';
+session_start();
+require_once 'data/users.php';
 
 //Check to see if user is logged in.  Create new User object
-//	$user = new User();
-//	$user->confirm_User();
+	$user = new User();
+	$user->confirm_User();
 
 ?>
 
@@ -41,27 +41,66 @@
     <title>CS 4750</title>
 </head>
 <body>
-<div class="wrapper">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#welcome" data-toggle="tab">Welcome</a></li>
-        <li><a href="#home" data-toggle="tab">Game Board</a></li>
-        <li><a href="#mapEditor" data-toggle="tab">Edit Map</a></li>
-        <li><a href="#units" data-toggle="tab">Edit Units</a></li>
-        <li><a href="#buildings" data-toggle="tab">Edit Buildings</a></li>
-        <li><a href="#scores" data-toggle="tab">Score Board</a></li>
-        <li><a href="login.php?status=loggedout">Logout</a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div class="tab-pane active" id="welcome"><?php include 'mainMenu.php'; ?></div>
-        <div class="tab-pane" id="home"><?php include 'gameBoard.php'; ?></div>
-        <div class="tab-pane" id="mapEditor"><?php include 'mapEditor.php'; ?></div>
-        <div class="tab-pane" id="units"><?php include 'editUnits.php'; ?></div>
-        <div class="tab-pane" id="buildings"><?php include 'editBuildings.php'; ?></div>
-        <div class="tab-pane" id="scores"><?php include 'scoreBoard.php'; ?></div>
-    </div>
-</div>
-<!--/wrapper-->
+<div id="Main Menu" class="container-fluid" ng-controller="NavController">
+    <form>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" style="color:#fff;"><h1 class="text-center">Main Menu</h1></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <p>
+                    <button type="button" id="singlePlayerButton" class="btn btn-primary btn-lg btn-block">Start New Single Player Game</button>
+                </p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <p>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Start New Two Player Game</button>
+                </p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <p>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" >Load Saved Game</button>
+                </p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <p>
+                    <button class="btn btn-primary btn-lg btn-block">View Leaderboard</button>
+                </p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <p>
+                    <button class="btn btn-primary btn-lg btn-block">Logout</button>
+                </p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="singlePlayerModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <ng-view></ng-view>
+                </div>
+            </div>
+        </div>
+    </form>
+</div><!-- /Main Menu-->
+<div id="singlePlayerModal" class="clearfix">
+    <h1>Please Select Map to Play</h1>
+    <?php require_once "mapEditor.php" ?>
+</div><!--/singlePlayerModal-->
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 	function drawgrid()
 	{
-		require 'data/mysql.php';
+		require_once 'data/mysql.php';
 		$mysql = New Mysql();
 		$mapUnits = $mysql->loadGame();
 

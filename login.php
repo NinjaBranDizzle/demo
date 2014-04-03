@@ -1,4 +1,5 @@
 <?php
+  session_start(); 
 	require_once 'data/users.php';
 	$user = new User();
 
@@ -61,8 +62,11 @@
    			<input type="submit" id="submit" class="btn btn-primary btn-sm" value="Login" name="submit" />
    		</p>
    	</form>
-      <p><a href="register.php">Register</a></p>
+      <p id="register" style="cursor:pointer;">Register</p>
    	<?php if(isset($response)) echo "<h4 class='alert'>". $response  ."</h4>"; ?>
    </div><!-- /login-->
+   <div id="registerContent">
+      <?php include_once "register.php"; ?>
+   </div><!--/register-->
 </body>
 </html>

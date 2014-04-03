@@ -216,6 +216,7 @@ p {
 .scoreboard .col {
     width: 33%;
     padding: 25px;
+    line-height:75px;
     float: left;
 }
 
@@ -233,7 +234,8 @@ p {
 
 .scoreboard img {
     vertical-align: bottom;
-    margin-top: 10px
+    margin-top: 10px;
+    box-shadow:3px 3px 10px #000;
 }
 
 /*
@@ -243,12 +245,15 @@ p {
 *
 * ===========================================================
 */
-#register {
-    width: 400px;
-    margin: 0 auto;
-    background-color: #ccc;
-    padding: 10px;
-    border: 1px solid #000;
+#registerContent{
+    height:390px;    
+    width:600px;
+    margin:0 auto;
+    display:none;
+    background-color:#fff;
+    padding:15px;
+    border-radius:15px;
+
 }
 
 /*
@@ -305,6 +310,134 @@ p {
 	bottom: 60%;
 	background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
 	pointer-events: none;
+}
+
+/*
+* ===========================================================
+*
+* ==================Single Player Modal======================
+*
+* ===========================================================
+*/
+.modal{
+    display:none;
+    position:absolute;
+    top:160px;
+    left:27%;
+    background-color:#fff;
+    padding:15px;
+    border-radius:15px;
+    width:600px;
+}
+
+#singlePlayerModal{
+    display:none;
+    position:absolute;
+    top:160px;
+    left:27%;
+    background-color:#fff;
+    padding:15px;
+    border-radius:15px;
+    width:600px;
+}
+
+#singlePlayerModal h1, .content h1, #registerContent h1{
+    margin:0 0 15px 0;
+    padding-bottom:15px;
+    border-bottom:1px solid #ccc;
+}
+
+#singlePlayerModal select{
+    width:300px;
+    float:left;
+    margin-bottom:15px;
+}
+
+#singlePlayerModal img{
+    width:480px;
+    display:block;
+    box-shadow:3px 3px 10px #000;
+    margin:0 auto 15px;
+}
+
+#singlePlayerModal button{
+    float:right;
+}
+
+#mainMenu ul{
+    float:right;
+}
+
+
+#mainMenu ul li:first-child{
+    border:none;
+}
+
+#mainMenu ul li{
+    float:left;
+    margin-left:10px;
+    cursor:pointer;
+    border-left:1px solid #ccc;
+    padding-left:10px;
+}
+
+#mainMenu ul li a{
+    color:#000;
+    text-decoration:none;
+}
+
+.content{
+    display:none;
+}
+
+#gameContent{
+    display:block;
+}
+
+#editUnits{
+
+}
+
+.sideNav{
+    width:120px;
+    float:left;
+}
+
+.sideNav ul li{
+    border:none;
+    padding:5px;
+    cursor:pointer;
+}
+
+.sideNav ul li.active{
+    height:35px;
+    line-height:25px;
+    border:1px solid #ccc;
+    border-right:none;
+    margin-bottom:5px;
+    font-weight:bold;
+    background-color:#fff;
+    position:relative;
+    z-index:1;
+}
+
+#editBuildingsContent, #editUnitsContent{
+    width:618px;
+    padding:25px;
+    float:left;
+    border:1px solid #ccc;
+    position:relative;
+    z-index:0;
+    margin-left:-1px;
+}
+
+#editBuildingsContent{
+    display:none;
+}
+
+.saveBtn{
+    float:right;
+    margin-right:15px;
 }
 
 

@@ -1,33 +1,21 @@
-<?php
-	session_start(); 
-	require_once 'classes/users.php';
-	$user = new User();
-
-	include 'header.php'; 
-
-
-
-if(isset($_POST['submit'])){
-	$submit = strip_tags($_POST['submit']);
-	$username = strtolower(strip_tags($_POST['username']));
-	$password = strip_tags($_POST['password']);
-	$repeatpassword = strip_tags($_POST['repeatpassword']);
-}
-
-if(isset($_POST['submit']))
-{
-	$response = $user-> register_User($username, $password, $repeatpassword);
-
-}
-?>
-<div class="registerWrapper">
-	<h1>Register</h1>
-	<form action="register.php" method="POST">
-		<p><input type="text" name="username" placeholder="Username" /></p>
-		<p><input type="password" placeholder="Password" name="password"></p>
-		<p><input type="password" placeholder="Repeat Password" name="repeatpassword"></p>
-		<input type="submit" name="submit" class="btn btn-primary btn-small" style="margin-left:0;" value="Register">
-	</form>
-	<?php if(isset($response)) echo "<h4 class='alert'>". $response  ."</h4>"; ?>
-</div><!--/registerWrapper-->
-<?php include('footer.php'); ?>
+<h1>Register</h1>
+<div class="form-group clearfix">
+	<label for="Health" class="col-sm-4 control-label">Username</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+    </div>
+</div>
+<div class="form-group clearfix">
+	<label for="Health" class="col-sm-4 control-label">Password</label>
+    <div class="col-sm-4">
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+    </div>
+</div>
+<div class="form-group clearfix">
+	<label for="Health" class="col-sm-4 control-label">Repeat Password</label>
+    <div class="col-sm-4">
+        <input type="password" class="form-control" id="repeatpassword" placeholder="Repeat Password" name="repeatpassword">
+    </div>
+</div>
+<input type="submit" id="registerSubmit" name="submit" class="btn btn-primary btn-small" style="margin-left:0;" value="Register">
+<?php if(isset($response)) echo "<h4 class='alert'>". $response  ."</h4>"; ?>

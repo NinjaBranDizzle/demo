@@ -1,6 +1,6 @@
 <?php
 //session_start();
-require 'data/mysql.php';
+require_once 'mysql.php';
 
 //namespace battleship;
 
@@ -60,7 +60,7 @@ class User
                         if ($registerResponse) {
                             return "Successfully Registered!";
                         } else
-                            return "Successfully Registered!<br /><a href='login.php'>Login</a>";
+                            return "Successfully Registered!";
 
                     }
                 } else {

@@ -162,6 +162,28 @@ class Mysql
 		}
 	}
 
+    //Load Scoarboard
+    function loadScoreboard() {
+        $query = "SELECT * FROM SCOREBOARD";
+        if($stmt = $this->conn->prepare($query)){
+            $stmt->execute();
+
+            $meta = $stmt->result_metadata();
+            while($fields = $meta->fetch_field()) {
+                $result_param[] = &$row[$fields->name];
+            }
+            call_user_func_array(array($stmt, 'bind_result'), $result_param);
+            while ($stmt->fetch()) {
+                foreach ($row as $key => $value) {
+                    $c[$key] = $value;
+                }
+                $arr[] = $c;
+            }
+            $stmt->close();
+            return $arr;
+        }
+    }
+
 	//Load Attributes for single Building
 	function editBuildingSelect($building) {
 		$query = "SELECT * FROM BUILDINGS WHERE NAME = ? ";

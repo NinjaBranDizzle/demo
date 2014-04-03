@@ -26,15 +26,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="Can_Parent" class="col-sm-3 control-label">Can Parent</label>
-
-            <div class="checkbox">
-                <div class="col-sm-3">
-                    <input type="checkbox" name="can_parent" id="canParent"/>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
             <label for="PopProvided" class="col-sm-3 control-label">Pop Provided</label>
 
             <div class="col-sm-2">
@@ -42,10 +33,13 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-1">
-                <button type="button" id="submitBuildingAtt" class="btn btn-primary">Save</button>
-                <button type="button" id="nextModalOne" style="display:none;" class="btn btn-primary">Next</button>
+            <label for="Can_Parent" class="col-sm-3 control-label">Can Parent</label>
+            <div class="checkbox">
+                <div class="col-sm-1">
+                    <input type="checkbox" name="can_parent" id="canParent"/>
+                </div>
             </div>
         </div>
+            <button type="button" id="submitBuildingAtt" class="btn btn-primary saveBtn">Save</button>
     </form>
 </div>  <!-- end of row -->

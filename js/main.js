@@ -1,21 +1,73 @@
 //On Load
 $(function() {
-	$('#startSingle').on('click', function(){
-		$('#selectBuilding').slideDown();
-		$('#nextModalOne').show();
-		$('#submitBuildingAtt').hide();
+	//Start new single player game
+	$('#singlePlayerButton').on('click', function(){
+		$('#singlePlayerModal').slideDown();
 	});
 
-	$('#nextModalOne').on('click', function(){
-		saveBuildingAttributes();
-		$('#selectBuilding').slideUp();
-		$('#selectUnit').slideDown();
-		$('#nextModalTwo').show();
-		$('#submitUnitAtt').hide();
+	//Modal map selection
+	$('#mapSelect').change(function(){
+		var selectedMap = $('#mapSelect option:selected').val();
+		console.log("Map selected: " + selectedMap);
+		$('#selectedMapPreview').attr('src', 'images/' + selectedMap + 'Preview.png');
 	});
 
-	$('#nextModalTwo').on('click', function(){
-		saveUnitAttributes();
+	$('#selectMapButton').on('click', function(){
+		window.location.href = "/game.php";
+	});
+
+	//Admin Side Navigation
+	$('.adminSideNav').on('click', function(){
+		var content = $(this).attr('id');
+		$('.adminSideNav').removeClass('active');
+		$('.adminContent').hide();
+		$(this).addClass('active');
+		$('#' + content + 'Content').show();
+	});
+
+	$('.nav').on('click', function(){
+		var content = $(this).attr('id');
+		$('.content').hide();
+		$('#' + content + 'Content').show();
+	});
+
+	$('#register').on('click', function(){
+		$('#registerContent').slideDown();
+	});
+
+	//Register a new user
+	$('#registerSubmit').on('click', function(){
+		var _username = $('#username').val();
+		var _password = $('#password').val();
+		var _repeatpassword = $('#repeatpassword').val();
+		console.log("Username: " + _username + "Password: " + _password + "RepeatPassword: " + _repeatpassword);
+		$.post('/ajax/registerUser.php',{
+				task : 'registerUser',
+				username : _username,
+				password : _password,
+				repeatpassword : _repeatpassword
+			}
+		)
+		.error(
+			function(data){
+				console.log("Error registering user");
+				console.log(data);
+			})
+		.success(
+			function(data){
+				console.log("Registration Success");				
+				console.log(data);		
+				if(data == "Successfully Registered!"){
+					$('#registerContent').slideUp();
+				}		
+				alert(data);
+		});
+	});
+
+	//Navigation selected content
+	$('.unitPopup').hover(function () {
+		var id = $(this).attr('id');
+	  $('#' + id +'Content').toggle();
 	});
 
 	//Turn Grid Off
