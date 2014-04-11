@@ -31,3 +31,4 @@
     <img id="selectedMapPreview" src="images/firestormPreview.png" border="0" />
 
     <button type="button" id="selectMapButton" class="btn btn-primary">Proceed</button>
+    <button type="button" id="singlePlayerCloseButton" class="btn btn-primary">Close</button>
