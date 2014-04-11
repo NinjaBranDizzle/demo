@@ -3,8 +3,10 @@
 	function drawgrid()
 	{
 		require_once 'data/mysql.php';
+		$map = $_GET['map'];
+		$layout = $_GET['layout'];
 		$mysql = New Mysql();
-		$mapUnits = $mysql->loadGame();
+		$mapUnits = $mysql->loadGame($layout);
 
 		//global $color, $unit, $health, $weakCurse, $strongCurse, $weakBuff, $strongBuff, $airAttack, $airDefence, $groundAttack, $groundDefence, $attackRange, $moveRange, $superPower;
 
@@ -44,7 +46,7 @@
 					echo ('<div id="'.$i.'-'.$j.'Content" class="noUnitStats"></div>');
 
 				} else {
-					echo ('<img class="unitPopup" id="'.$i.'-'.$j.'" src="images/units/'.$color[$i][$j].$unit[$i][$j].'Jitter.gif" onclick="cellClicked('.$i.','.$j.',\''.$color[$i][$j].'\',\''.$unit[$i][$j].'\','.$health[$i][$j].','.$weakCurse[$i][$j].','.$strongCurse[$i][$j].','.$weakBuff[$i][$j].','.$strongBuff[$i][$j].','.$airAttack[$i][$j].','.$airDefence[$i][$j].','.$groundAttack[$i][$j].','.$groundDefence[$i][$j].','.$attackRange[$i][$j].','.$moveRange[$i][$j].','.$superPower[$i][$j].');" />');
+					echo ('<img class="unitPopup '. $color[$i][$j].'" id="'.$i.'-'.$j.'" src="images/units/'.$color[$i][$j].$unit[$i][$j].'Jitter.gif" onclick="cellClicked('.$i.','.$j.',\''.$color[$i][$j].'\',\''.$unit[$i][$j].'\','.$health[$i][$j].','.$weakCurse[$i][$j].','.$strongCurse[$i][$j].','.$weakBuff[$i][$j].','.$strongBuff[$i][$j].','.$airAttack[$i][$j].','.$airDefence[$i][$j].','.$groundAttack[$i][$j].','.$groundDefence[$i][$j].','.$attackRange[$i][$j].','.$moveRange[$i][$j].','.$superPower[$i][$j].');" />');
 					echo ('<div id="'.$i.'-'.$j.'Content" class="unitStats">');
 					echo ('<h4>'.$color[$i][$j].$unit[$i][$j].'</h4>');
 					echo ('<p>Health: '.$health[$i][$j].'</p>');

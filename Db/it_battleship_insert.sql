@@ -1,3 +1,9 @@
+ INSERT INTO MAP
+(MAP_NAME, MAP_ROW, MAP_COLUMN, COLOR, UNIT, HEALTH, WEAK_CURSE, STRONG_CURSE, WEAK_BUFF, STRONG_BUFF, AIR_ATTACK, AIR_DEFENCE, GROUND_ATTACK, GROUND_DEFENCE, ATTACK_RANGE, MOVE_RANGE, SUPER_POWER)
+  SELECT 'oneonone',    0,    0,    'Red',    'Jet',    100,    0,    0,    0,    0,    0,    0,    0,    0,    4,    4,    0
+  UNION
+ SELECT 'oneonone',    3,    15,    'Blue',    'Tank',    300,    0,    0,    0,    0,    0,    0,    0,    0,    3,    1,    0
+
 --
 -- Dumping data for table `SCOREBOARD`
 --

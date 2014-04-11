@@ -20,8 +20,13 @@
 	<h2>Select a map to play</h2>
     <select id="mapSelect" class="form-control">                                      
         <option value="firestorm">Firestorm</option>               
-        <option value="blitzkrieg">Blitzkrieg</option>      
+        <option value="landrush">Land Rush</option>      
         <option value="gulfofoman">Gulf of Oman</option>                    
+    </select>
+
+    <select id="layoutSelect" class="form-control">                                      
+        <option value="blitzkrieg">Blitzkrieg</option>               
+        <option value="oneonone">One on one</option>                         
     </select>
     <img id="selectedMapPreview" src="images/firestormPreview.png" border="0" />
 

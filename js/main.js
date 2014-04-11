@@ -13,7 +13,9 @@ $(function() {
 	});
 
 	$('#selectMapButton').on('click', function(){
-		window.location.href = "/game.php";
+		var selectedMap = $('#mapSelect option:selected').val();
+		var selectedLayout = $('#layoutSelect option:selected').val();
+		window.location.href = "/game.php?map=" + selectedMap + "&layout=" + selectedLayout;
 	});
 
 	//Submit new score
