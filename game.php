@@ -53,6 +53,7 @@
             <ul>
                 <li id="editUnits" class="active adminSideNav">Edit Units</li>
                 <li id="editBuildings" class="adminSideNav">Edit Buildings</li>
+                <li id="editScoreBoard" class="adminSideNav">Edit Scoreboard</li>
             </ul>
         </div><!--/sideNav-->
 
@@ -63,6 +64,10 @@
         <div id="editBuildingsContent" class="adminContent">
             <?php include "editBuildings.php"; ?>
         </div><!--/editUnits-->
+
+        <div id="editScoreBoardContent" class="adminContent">
+            <?php include "editScoreBoard.php"; ?>
+        </div><!--/editScoreboard-->
    
     </div><!-- /adminContent-->
 

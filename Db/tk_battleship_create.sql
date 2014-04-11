@@ -1,5 +1,14 @@
-DROP DATABASE IF EXISTS tk;
-CREATE DATABASE tk;
+--
+-- Table structure for table `SCOREBOARD`
+--
+
+CREATE TABLE `SCOREBOARD` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `score` int(10) NOT NULL,
+  `url` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 /* user setup */
 

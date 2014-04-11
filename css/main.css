@@ -347,6 +347,11 @@ p {
     border-bottom:1px solid #ccc;
 }
 
+#singlePlayerModal h2{
+    font-size:14px;
+    margin:0 0 5px 0;
+}
+
 #singlePlayerModal select{
     width:300px;
     float:left;
@@ -357,7 +362,7 @@ p {
     width:480px;
     display:block;
     box-shadow:3px 3px 10px #000;
-    margin:0 auto 15px;
+    margin:0 0 15px 0;
 }
 
 #singlePlayerModal button{
@@ -399,7 +404,7 @@ p {
 }
 
 .sideNav{
-    width:120px;
+    width:125px;
     float:left;
 }
 
@@ -421,8 +426,8 @@ p {
     z-index:1;
 }
 
-#editBuildingsContent, #editUnitsContent{
-    width:618px;
+#editBuildingsContent, #editUnitsContent, #editScoreBoardContent{
+    width:614px;
     padding:25px;
     float:left;
     border:1px solid #ccc;
@@ -431,7 +436,7 @@ p {
     margin-left:-1px;
 }
 
-#editBuildingsContent{
+#editBuildingsContent, #editScoreBoardContent{
     display:none;
 }
 

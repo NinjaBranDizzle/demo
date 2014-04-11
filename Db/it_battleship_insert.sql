@@ -1,3 +1,14 @@
+--
+-- Dumping data for table `SCOREBOARD`
+--
+
+INSERT INTO `SCOREBOARD` (`id`, `name`, `score`, `url`) VALUES
+(1, 'Brandon', 1000, 'https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-prn1/t1.0-9/1017282_10201424456679340_874727043_n.jpg'),
+(2, 'Marlan', 1110, 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/c0.24.160.160/p160x160/1620758_10201882699253137_1815229301_n.jpg'),
+(4, 'David', 1200, 'https://lh3.googleusercontent.com/-mur6MMHyGGY/AAAAAAAAAAI/AAAAAAAAAZY/-XFLvT4ND4E/s120-c/photo.jpg');
+DROP DATABASE IF EXISTS tk;
+CREATE DATABASE tk;
+
 USE tk;
 DELETE FROM bs_unit;
 

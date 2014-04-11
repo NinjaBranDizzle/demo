@@ -164,7 +164,7 @@ class Mysql
 
     //Load Scoarboard
     function loadScoreboard() {
-        $query = "SELECT * FROM SCOREBOARD";
+        $query = "SELECT * FROM SCOREBOARD ORDER BY score DESC";
         if($stmt = $this->conn->prepare($query)){
             $stmt->execute();
 
@@ -181,6 +181,21 @@ class Mysql
             }
             $stmt->close();
             return $arr;
+        }
+    }
+
+    //Add new score to scoreboard
+    function addScore($name, $score, $url)
+    {
+        $query = "INSERT INTO SCOREBOARD (name, score, url) VALUES(?,?,?)";
+        if ($stmt = $this->conn->prepare($query)) {
+            $stmt->bind_param('sis', $name, $score, $url);
+            $stmt->execute();
+
+            if ($stmt->fetch()) {
+                $stmt->close();
+                return true;
+            }
         }
     }
 

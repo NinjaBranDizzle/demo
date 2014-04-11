@@ -7,9 +7,8 @@
 //printf("Unit: %s.\n", $key['UNIT_DESC']);
 //	}
 ?>
-
+<h1>Edit Units</h1>
 <div class="row">
-    
 <div class="clearfix" style="margin-bottom:15px;">
     <div class="form-group">
         <label for="unit_ID" class="col-sm-3 control-label">Select Unit</label>
@@ -22,8 +21,7 @@
             }
             ?>						
         </select>
-    </div>
-    
+    </div>  
 </div>
 
     <form class="form-horizontal" role="form" id="editUnitForm">

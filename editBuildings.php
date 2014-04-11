@@ -3,7 +3,7 @@
     $mysql = New Mysql();
     $getBuildings = $mysql->loadBuildingTypes();
 ?>
-
+<h1>Edit Buildings</h1>
 <div class="row">
     <form class="form-horizontal" role="form">
         <div class="clearfix" style="margin-bottom:15px;">

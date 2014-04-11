@@ -16,6 +16,41 @@ $(function() {
 		window.location.href = "/game.php";
 	});
 
+	//Submit new score
+	$('#submitScore').on('click', function(){
+		alert ("made it");
+		var url = $('#scoreurl').val();
+		var name = $('#scoreName').val();
+		var score = $('#scoreAmount').val();
+		//console.log("URL: " + url + " Name: " + name + " Score: " + score);
+		updateScore(url, name, score);
+	});
+
+	function updateScore($url, $name, $score){
+		//console.log("URL: " + $url + " Name: " + $name + " Score: " + $score);
+		_url = $url;
+		_name = $name;
+		_score = $score;
+		$.post('/ajax/addScore.php',{
+			task : 'addScore',
+			url : _url,
+			name : _name,
+			score : _score
+			}
+		)
+		.error(
+			function(data){
+				console.log("Error adding score");
+				console.log(data);
+			})
+		.success(
+			function(data){
+				console.log("Added Score!");				
+				console.log(data);			
+				alert(data);
+		});
+	}
+
 	//Admin Side Navigation
 	$('.adminSideNav').on('click', function(){
 		var content = $(this).attr('id');

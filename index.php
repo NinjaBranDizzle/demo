@@ -99,7 +99,7 @@ require_once 'data/users.php';
     </form>
 </div><!-- /Main Menu-->
 <div id="singlePlayerModal" class="clearfix">
-    <h1>Please Select Map to Play</h1>
+    <h1>Start a new single player game</h1>
     <?php require_once "mapEditor.php" ?>
 </div><!--/singlePlayerModal-->
 </body>
