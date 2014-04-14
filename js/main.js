@@ -5,6 +5,10 @@ $(function() {
 		$('#singlePlayerModal').slideDown();
 	});
 
+	$('#singlePlayerCloseButton').on('click', function(){
+		$('#singlePlayerModal').slideUp();
+	});
+
 	//Modal map selection
 	$('#mapSelect').change(function(){
 		var selectedMap = $('#mapSelect option:selected').attr("id");
