@@ -16,4 +16,4 @@
     <img id="selectedMapPreview" src="images/firestormBlitzkriegPreview.png" border="0" />
 
     <button type="button" id="selectMapButton" class="btn btn-primary">Proceed</button>
-    <button type="button" id="singlePlayerCloseButton" class="btn btn-primary">Close</button>
+    <button type="button"  style="float:left;" id="singlePlayerCloseButton" class="btn btn-primary">Close</button>
