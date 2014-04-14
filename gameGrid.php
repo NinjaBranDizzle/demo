@@ -4,9 +4,27 @@
 	{
 		require_once 'data/mysql.php';
 		$map = $_GET['map'];
-		$layout = $_GET['layout'];
+		$mapBg = 'firestormMap.png';
+		switch ($map){
+			case 'firestormblitzkrieg':
+			case 'firestormoneonone':
+			case 'firestormair':
+				$mapBg = 'firestormMap.png';
+				break;
+			case 'landrushblitzkrieg':
+			case 'landrushair':
+			case 'landrushoneonone':
+				$mapBg = 'landrushMap.png';
+				break;
+			case 'gulfofomanblitzkrieg':
+			case 'gulfofomanoneonone':
+			case 'gulfofomanair':
+				$mapBg = 'gulfofomanMap.png';
+				break;
+		}
+
 		$mysql = New Mysql();
-		$mapUnits = $mysql->loadGame($layout);
+		$mapUnits = $mysql->loadGame($map);
 
 		//global $color, $unit, $health, $weakCurse, $strongCurse, $weakBuff, $strongBuff, $airAttack, $airDefence, $groundAttack, $groundDefence, $attackRange, $moveRange, $superPower;
 
@@ -29,7 +47,7 @@
 			$superPower[$tempUnit['map_row']][$tempUnit['map_column']] = $tempUnit['super_power'];
         }
 
-		echo ('<div class="mapContainer">');
+		echo ('<div class="mapContainer" style="background-image: url(images/' . $mapBg .');">');
 		echo ('<form name="gamedata">');
 
 		//Loop through rows in the grid

@@ -1,33 +1,18 @@
 <?php
 
 ?>
-	<h2>Select the color of your army</h2>
-	<div class="row" style="margin-bottom:15px;">
-		<div class="form-group">
-			<div class="col-sm-4">
-				<!--  radio buttons here -->
-				<div class="btn-group" data-toggle="buttons">
-					<label class="btn btn-primary">
-						<input type="radio" name="options" id="optionBlue">Blue
-					</label>
-					<label class="btn btn-danger">
-						<input type="radio" name="options" id="optionRed">Red
-					</label>
-				</div>
-			</div>
-		</div>
-	</div><!-- end of row -->
-	<h2>Select a map to play</h2>
+	<h2>Select a map and mode to play</h2>
     <select id="mapSelect" class="form-control">                                      
-        <option value="firestorm">Firestorm</option>               
-        <option value="landrush">Land Rush</option>      
-        <option value="gulfofoman">Gulf of Oman</option>                    
+        <option id="firestormBlitzkrieg" value="?map=firestormblitzkrieg">Firestorm - Blitzkrieg</option>               
+        <option id="firestormOneOnOne" value="?map=firestormoneonone">Firestorm - One on one</option>               
+        <option id="firestormAir" value="?map=firestormair">Firestorm - Air Battle</option>               
+        <option id="landrushBlitzkrieg" value="?map=landrushblitzkrieg">Land Rush - Blitzkrieg</option>      
+        <option id="landrushOneOnOne" value="?map=landrushoneonone">Land Rush - One on one</option>      
+        <option id="landrushAir" value="?map=landrushair">Land Rush - Air Battle</option>      
+        <option id="gulfofomanBlitzkrieg" value="?map=gulfofomanblitzkrieg">Gulfof Oman - Blitzkrieg</option>                    
+        <option id="gulfofomanOneOnOne" value="?map=gulfofomanoneonone">Gulf of Oman - One on one</option>                    
+        <option id="gulfofomanAir" value="?map=gulfofomanair">Gulf of Oman - Air Battle</option>                    
     </select>
-
-    <select id="layoutSelect" class="form-control">                                      
-        <option value="blitzkrieg">Blitzkrieg</option>               
-        <option value="oneonone">One on one</option>                         
-    </select>
-    <img id="selectedMapPreview" src="images/firestormPreview.png" border="0" />
+    <img id="selectedMapPreview" src="images/firestormBlitzkriegPreview.png" border="0" />
 
     <button type="button" id="selectMapButton" class="btn btn-primary">Proceed</button>

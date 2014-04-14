@@ -58,22 +58,6 @@ require_once 'data/users.php';
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <p>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Start New Two Player Game</button>
-                </p>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <p>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" >Load Saved Game</button>
-                </p>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <p>
                     <button class="btn btn-primary btn-lg btn-block">View Leaderboard</button>
                 </p>
             </div>

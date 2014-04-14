@@ -7,15 +7,14 @@ $(function() {
 
 	//Modal map selection
 	$('#mapSelect').change(function(){
-		var selectedMap = $('#mapSelect option:selected').val();
+		var selectedMap = $('#mapSelect option:selected').attr("id");
 		console.log("Map selected: " + selectedMap);
 		$('#selectedMapPreview').attr('src', 'images/' + selectedMap + 'Preview.png');
 	});
 
 	$('#selectMapButton').on('click', function(){
 		var selectedMap = $('#mapSelect option:selected').val();
-		var selectedLayout = $('#layoutSelect option:selected').val();
-		window.location.href = "/game.php?map=" + selectedMap + "&layout=" + selectedLayout;
+		window.location.href = "/game.php" + selectedMap;
 	});
 
 	//Submit new score

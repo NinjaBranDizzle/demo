@@ -74,12 +74,12 @@ class Mysql
         }
     }
 
-	function loadGame($layout)	{
+	function loadGame($map)	{
 
 
 		$query = "SELECT map_row, map_column, color, unit, health, weak_curse, strong_curse, weak_buff, strong_buff, air_attack, air_defence, ground_attack, ground_defence, attack_range, move_range, super_power FROM map WHERE MAP_NAME = ? ";
 		if($stmt = $this->conn->prepare($query)){
-            $stmt->bind_param('s', $layout);
+            $stmt->bind_param('s', $map);
 			$stmt->execute();
 
 	
