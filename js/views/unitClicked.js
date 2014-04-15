@@ -304,7 +304,7 @@
 	{
 		//Temporary message to show available data elements
 		//var msg = "ATTACK!!\n\nHa Ha Ha...All your base are belong to us!\n\n\n";
-		var damage = 55;
+		var damage = 155;
 		health = health - damage;
 		if (health <= 0)
 		{
@@ -332,10 +332,18 @@
 		{
 			playSound("KaBoom");
 			msg = msg + color + " " + unit + " has been destroyed.\n";
-			if (color == "Red")
-				msg = msg + '\n\n' + document.gamedata.fromColor.value + ': "Ha ha ha...all your base are belong to us!"';
-			else
-				msg = msg + '\n\n' + document.gamedata.fromColor.value + ': "Ha ha ha...get you the hot bullets of machinegun to die!"';
+
+			if (checkGameOver(color) == 0)
+			{
+				msg = msg + '\n\n' + color + ' has no more units and has lost the game.';
+				msg = msg + '\n\n' + document.gamedata.fromColor.value + ' IS THE WINNER WINNER CHICKEN DINNER!!';
+				playSound(document.gamedata.fromColor.value + "Wins");
+			} else {
+				if (color == "Red")
+					msg = msg + '\n\n' + document.gamedata.fromColor.value + ': "Ha ha ha...all your base are belong to us!"';
+				else
+					msg = msg + '\n\n' + document.gamedata.fromColor.value + ': "Ha ha ha...get you the hot bullets of machinegun to die!"';
+			}
 		} else {
 			msg = msg + damage + " points of damage inflicted on " + color + " " + unit + "\n";
 			msg = msg + "______________________________\n";
@@ -353,6 +361,23 @@
 		
 		changeTurn(turn);
 		isFirstClick = true;	
+	}
+	function checkGameOver(color) {
+//alert("color " + color);
+		for (var rowi=0; rowi<=11; rowi++) //11
+		{
+			for (var colj=0; colj<=17; colj++) //17
+			{
+				//Check if any more of the units exist, if none then game over
+//				alert(document.getElementById(rowi + "-" + colj).getAttribute("src").substring(13,17));
+//				alert(document.getElementById(rowi + "-" + colj).getAttribute("src").substring(13,16));
+				if ((document.getElementById(rowi + "-" + colj).getAttribute("src").substring(13,16) == color) || (document.getElementById(rowi + "-" + colj).getAttribute("src").substring(13,17) == color))
+				{
+					return 1;
+				}
+			}
+		}
+		return 0;
 	}
 	function playMusic() {
 		var sound = new Audio();
