@@ -10,6 +10,16 @@ $(function() {
 	});
 
 	//Modal map selection
+	$('.unitPopup').mouseenter(function(){
+		$(this).next('div').show();
+	});
+
+		//Modal map selection
+	$('.unitPopup').mouseleave(function(){
+		$(this).next('div').hide();
+	});
+
+	//Modal map selection
 	$('#mapSelect').change(function(){
 		var selectedMap = $('#mapSelect option:selected').attr("id");
 		console.log("Map selected: " + selectedMap);
@@ -23,7 +33,6 @@ $(function() {
 
 	//Submit new score
 	$('#submitScore').on('click', function(){
-		alert ("made it");
 		var url = $('#scoreurl').val();
 		var name = $('#scoreName').val();
 		var score = $('#scoreAmount').val();
@@ -52,7 +61,7 @@ $(function() {
 			function(data){
 				console.log("Added Score!");				
 				console.log(data);			
-				alert(data);
+				alert ("Score added!");
 		});
 	}
 

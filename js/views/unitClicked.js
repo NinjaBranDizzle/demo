@@ -338,6 +338,7 @@
 				msg = msg + '\n\n' + color + ' has no more units and has lost the game.';
 				msg = msg + '\n\n' + document.gamedata.fromColor.value + ' IS THE WINNER WINNER CHICKEN DINNER!!';
 				playSound(document.gamedata.fromColor.value + "Wins");
+				
 			} else {
 				if (color == "Red")
 					msg = msg + '\n\n' + document.gamedata.fromColor.value + ': "Ha ha ha...all your base are belong to us!"';
